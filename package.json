@@ -13,7 +13,7 @@
     "Express",
     "JavaScript"
   ],
-  "author": "AleVedoya ErikaTovarG",
+  "author": "AleVedoya JonatanHN",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
