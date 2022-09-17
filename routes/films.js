@@ -1,15 +1,11 @@
+const { getAllFilms } = require('../controllers/controllerFilms')
 const express = require('express')
 const routs = express.Router()
 const model = require('../models/films')
 
-const getMongo = async (req, res) => {
-	const films = await model.find()
-	res.status(200).json(films)
-}
+routs.get('/films', getAllFilms)
 
-routs.get('/films', getMongo)
-
-const postMongo = async (req, res) => {
+const postFilm = async (req, res) => {
 	const films = new model(req.body)
 	try {
 		const guardado = await films.save()
@@ -21,6 +17,6 @@ const postMongo = async (req, res) => {
 	}
 }
 
-routs.post('/films', postMongo)
+routs.post('/films', postFilm)
 
 module.exports = routs
