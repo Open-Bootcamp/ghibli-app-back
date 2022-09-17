@@ -1,6 +1,6 @@
 const modelCharacters = require('../models/characters')
 
-// Todos 
+// Todos
 const getAllCharacters = async (req, res) => {
 	const allCharacters = await modelCharacters.find()
 	res.status(200).json(allCharacters)
@@ -12,7 +12,7 @@ const getCharacter = async (req, res) => {
 	res.status(200).json(getDataCharacter)
 }
 
-// Enviar 
+// Enviar
 const sendCharacters = async (req, res) => {
 	const body = req.body
 	const newCharacter = await new modelCharacters(body)
@@ -20,7 +20,7 @@ const sendCharacters = async (req, res) => {
 	res.status(200).json(data)
 }
 
-// Actualizar 
+// Actualizar
 const updateCharacter = async (req, res) => {
 	const getDataCharacter = await modelCharacters.findByIdAndUpdate(
 		req.params.id,
@@ -29,8 +29,7 @@ const updateCharacter = async (req, res) => {
 	res.status(200).json(getDataCharacter)
 }
 
-
-// Eliminar 
+// Eliminar
 const deleteCharacter = async (req, res) => {
 	const getDataCharacter = await modelCharacters.findByIdAndDelete(
 		req.params.id
