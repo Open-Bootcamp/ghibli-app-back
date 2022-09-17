@@ -5,16 +5,27 @@ const getAllFilms = async (req, res) => {
 	res.status(200).json(films)
 }
 
-const postFilm = async (req, res) => {
-	const films = new model(req.body)
+const getFilm = async (req, res) => {
 	try {
-		const guardado = await films.save()
-		res.status(200).json(guardado)
+		const film = await model.findById(req.params.id)
+		res.status(200).json(film)
 	} catch (error) {
-		res.status(500).json({
-			error: error.mensaje,
+		req.status(500).json({
+			error: error.message,
 		})
 	}
 }
 
-module.exports = { getAllFilms, postFilm }
+const postFilm = async (req, res) => {
+	const films = new model(req.body)
+	try {
+		const saveData = await films.save()
+		res.status(200).json(saveData)
+	} catch (error) {
+		res.status(500).json({
+			error: error.message,
+		})
+	}
+}
+
+module.exports = { getAllFilms, postFilm, getFilm }
