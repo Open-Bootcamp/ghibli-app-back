@@ -1,18 +1,17 @@
 const express = require('express')
 const route = express.Router()
 const mongoose = require('mongoose')
-const modelCharacters = require('../models/characters')
 
-route.get('/characters', async (req, res) => {
-	const allCharacters = await modelCharacters.find()
-	res.status(200).json(allCharacters)
-})
+const {
+	getAllCharacters,
+	sendCharacters,
+	getCharacter,
+} = require('../controllers/controllerCharacters')
 
-route.post('/characters', async (req, res) => {
-	const body = req.body
-	const newCharacter = await new modelCharacters(body)
-	const data = await newCharacter.save()
-	res.status(200).json(data)
-})
+route.get('/characters', getAllCharacters)
+
+route.get('/characters/:id', getCharacter)
+
+route.post('/characters', sendCharacters)
 
 module.exports = route
