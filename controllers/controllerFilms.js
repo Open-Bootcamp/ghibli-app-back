@@ -28,4 +28,14 @@ const postFilm = async (req, res) => {
 	}
 }
 
-module.exports = { getAllFilms, postFilm, getFilm }
+const updateFilm = async (req, res) => {
+	const getDataFilm = await model.findByIdAndUpdate(req.params.id, req.body)
+	res.status(200).json(getDataFilm)
+}
+
+const deleteFilm = async (req, res) => {
+	const deleteDataFilm = await model.findByIdAndDelete(req.params.id, req.body)
+	res.status(200).json(deleteDataFilm)
+}
+
+module.exports = { getAllFilms, postFilm, getFilm, updateFilm, deleteFilm }
