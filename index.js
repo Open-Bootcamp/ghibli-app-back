@@ -40,6 +40,7 @@ app.get('/', function (req, res) {
 })
 
 app.use('/', require('./routes/films'))
+app.use('/', require('./routes/charactersRoute'))
 
 app.listen(port, () => {
 	console.log(`Servidor a la escucha en ${port}`)

@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 
 const characters = new mongoose.Schema({
 	name: String,
-	age: String,
+	age: Number,
 	gender: String,
-	url: { type: String, require: true },
+	url: { type: String },
 	films: [String],
 })
 
