@@ -39,7 +39,7 @@ app.get('/', function (req, res) {
 	res.send(respuesta)
 })
 
-app.use('/', require('./routes/films'))
+app.use('/', require('./routes/filmsRoute'))
 app.use('/', require('./routes/charactersRoute'))
 
 app.listen(port, () => {
