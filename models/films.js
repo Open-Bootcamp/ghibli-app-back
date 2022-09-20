@@ -8,6 +8,8 @@ const films = new mongoose.Schema({
 	description: { type: String, require: true },
 	director: { type: String, require: true },
 	producer: String,
+	cinematography: String,
+	music_by: String,
 	release_date: Number,
 	running_time: Number,
 	rt_score: Number,
