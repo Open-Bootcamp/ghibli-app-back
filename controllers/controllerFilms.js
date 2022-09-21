@@ -10,8 +10,8 @@ const getFilm = async (req, res) => {
 		const film = await model.findById(req.params.id)
 		res.status(200).json(film)
 	} catch (error) {
-		req.status(500).json({
-			error: error.message,
+		res.status(404).json({
+			error: 'El film no se ha encontrado, id incorrecto',
 		})
 	}
 }
@@ -29,13 +29,27 @@ const postFilm = async (req, res) => {
 }
 
 const updateFilm = async (req, res) => {
-	const getDataFilm = await model.findByIdAndUpdate(req.params.id, req.body)
-	res.status(200).json(getDataFilm)
+	try {
+		const getDataFilm = await model.findByIdAndUpdate(req.params.id, req.body)
+		res.status(200).json(getDataFilm)
+	} catch (error) {
+		res.status(400).json({
+			error: 'El film no se pudo actualizar',
+		})
+	}
 }
-
 const deleteFilm = async (req, res) => {
-	const deleteDataFilm = await model.findByIdAndDelete(req.params.id, req.body)
-	res.status(200).json(deleteDataFilm)
+	try {
+		const deleteDataFilm = await model.findByIdAndDelete(
+			req.params.id,
+			req.body
+		)
+		res.status(200).json(deleteDataFilm)
+	} catch (error) {
+		res.status(400).json({
+			error: 'El film no se pudo eliminar',
+		})
+	}
 }
 
 module.exports = { getAllFilms, postFilm, getFilm, updateFilm, deleteFilm }
